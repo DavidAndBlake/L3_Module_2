@@ -24,6 +24,8 @@ public class Enigma {
 		It would only scramble each letter in the same way each time, when it needs to be scrambled differently with each "wheel" turn.
 		 *
 		 * A potential better solution is to use offsets and a decryption mode to reverse the offsets in order to make the wheels turn
+		 * 3/25/18- New thoughts: create two string arrays containing the alphabet, and put them into a string array,
+		 * convert the letters of the alphabet into numbers, and set each wheel to start on a 
 		 */
 
 		
