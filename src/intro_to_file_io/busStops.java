@@ -5,10 +5,16 @@ import java.util.ArrayList;
 public class busStops {
 
 	public int countPassengers(ArrayList<int[]> list) {
-		for (int i = 0; i < list.size(); i++) {
 
+		int z = 0;
+		for (int i = 0; i < list.size(); i++) {
+			int[] arr = list.get(i);
+			int x = arr[0];
+			int y = arr[1];
+			z += (x - y);
 		}
-		return 0;
+
+		return z;
 	}
 }
 
