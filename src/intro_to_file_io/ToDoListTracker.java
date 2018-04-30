@@ -4,6 +4,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JTextArea;
 
 public class ToDoListTracker {
 
@@ -20,12 +21,24 @@ public class ToDoListTracker {
 
 		JFrame frame = new JFrame();
 		JPanel panel = new JPanel();
-		JButton button = new JButton();
+		JButton addTask = new JButton();
+		JButton removeTask = new JButton();
+		JButton save = new JButton();
+		JButton load = new JButton();
+		JTextArea text = new JTextArea();
+		addTask.setText("Add Task");
+		removeTask.setText("Remove Task");
+		save.setText("Save");
+		load.setText("Load");
 		frame.setVisible(true);
 		frame.add(panel);
-		frame.add(button);
+		panel.add(addTask);
+		panel.add(removeTask);
+		panel.add(save);
+		panel.add(load);
+
 		frame.setSize(900, 700);
-		panel.add(Text())
+		panel.add(text);
 		frame.setDefaultCloseOperation(frame.EXIT_ON_CLOSE);
 		String Task = JOptionPane.showInputDialog("");
 	}
