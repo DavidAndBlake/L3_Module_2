@@ -25,7 +25,7 @@ public class ToDoListTracker {
 		JButton removeTask = new JButton();
 		JButton save = new JButton();
 		JButton load = new JButton();
-		JTextArea text = new JTextArea();
+		JTextArea textArea = new JTextArea();
 		addTask.setText("Add Task");
 		removeTask.setText("Remove Task");
 		save.setText("Save");
@@ -36,10 +36,11 @@ public class ToDoListTracker {
 		panel.add(removeTask);
 		panel.add(save);
 		panel.add(load);
-
+		String task = JOptionPane.showInputDialog("What task do you want to add?");
+		textArea.add(task);
 		frame.setSize(900, 700);
-		panel.add(text);
+		panel.add(textArea);
 		frame.setDefaultCloseOperation(frame.EXIT_ON_CLOSE);
-		String Task = JOptionPane.showInputDialog("");
+
 	}
 }
