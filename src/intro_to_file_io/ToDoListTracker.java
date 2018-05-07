@@ -3,7 +3,7 @@ package intro_to_file_io;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
+import java.util.ArrayList;
 import javax.swing.AbstractButton;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -51,7 +51,8 @@ public class ToDoListTracker implements ActionListener {
 		panel.add(label);
 //		panel.setBackground(Color.TRANSLUCENT);
 		frame.setDefaultCloseOperation(frame.EXIT_ON_CLOSE);
-
+		ArrayList<String> labelList = new ArrayList<String>();
+		
 	}
 
 	@Override
