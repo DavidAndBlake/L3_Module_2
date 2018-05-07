@@ -1,12 +1,18 @@
 package intro_to_file_io;
 
+import java.awt.Color;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.AbstractButton;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 
-public class ToDoListTracker {
+public class ToDoListTracker implements ActionListener {
 
 	// Create a window with four buttons: add task, remove task, save, and load.
 	// The add task button will display a JOptionPane to get a task from the user
@@ -17,15 +23,19 @@ public class ToDoListTracker {
 	// The load button will load a new task list into the program and display it.
 	// The program should automatically load the last saved list from the file at
 	// startup and display it.
+	JFrame frame = new JFrame();
+	JPanel panel = new JPanel();
+	JButton addTask = new JButton();
+	JButton removeTask = new JButton();
+	JButton save = new JButton();
+	JButton load = new JButton();
+	JLabel label = new JLabel();
+	
 	public static void main(String[] args) {
-
-		JFrame frame = new JFrame();
-		JPanel panel = new JPanel();
-		JButton addTask = new JButton();
-		JButton removeTask = new JButton();
-		JButton save = new JButton();
-		JButton load = new JButton();
-		JTextArea textArea = new JTextArea();
+		new ToDoListTracker();
+	}
+	public ToDoListTracker() {
+		// TODO Auto-generated constructor stub
 		addTask.setText("Add Task");
 		removeTask.setText("Remove Task");
 		save.setText("Save");
@@ -36,11 +46,17 @@ public class ToDoListTracker {
 		panel.add(removeTask);
 		panel.add(save);
 		panel.add(load);
-		String task = JOptionPane.showInputDialog("What task do you want to add?");
-		textArea.add(task);
+		addTask.addActionListener(this);
 		frame.setSize(900, 700);
-		panel.add(textArea);
+		panel.add(label);
+//		panel.setBackground(Color.TRANSLUCENT);
 		frame.setDefaultCloseOperation(frame.EXIT_ON_CLOSE);
 
 	}
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		String task = JOptionPane.showInputDialog("What task do you want to add?");
+		label.setText(task);
+		}
 }
