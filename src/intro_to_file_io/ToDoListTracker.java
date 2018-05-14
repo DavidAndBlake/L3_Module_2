@@ -1,16 +1,13 @@
 package intro_to_file_io;
 
-import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
-import javax.swing.AbstractButton;
+
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import javax.swing.JTextArea;
 
 public class ToDoListTracker implements ActionListener {
 
@@ -30,10 +27,12 @@ public class ToDoListTracker implements ActionListener {
 	JButton save = new JButton();
 	JButton load = new JButton();
 	JLabel label = new JLabel();
-	
+	boolean isEmpty;
+
 	public static void main(String[] args) {
 		new ToDoListTracker();
 	}
+
 	public ToDoListTracker() {
 		// TODO Auto-generated constructor stub
 		addTask.setText("Add Task");
@@ -49,15 +48,22 @@ public class ToDoListTracker implements ActionListener {
 		addTask.addActionListener(this);
 		frame.setSize(900, 700);
 		panel.add(label);
-//		panel.setBackground(Color.TRANSLUCENT);
+		// panel.setBackground(Color.TRANSLUCENT);
 		frame.setDefaultCloseOperation(frame.EXIT_ON_CLOSE);
 		ArrayList<String> labelList = new ArrayList<String>();
-		
+
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		String task = JOptionPane.showInputDialog("What task do you want to add?");
-		label.setText(task);
-		}
+		// String task = JOptionPane.showInputDialog("What task do you want to add?");
+		String currentText = label.getText();
+		label.setText("<html>" + currentText + "tester" + "</html>");
+		// if (isEmpty == false) {
+		// String currentText = label.getText();
+		// label.setText("<html>" + currentText + "\n" + task + "</html>");
+		// } else {
+		// label.setText(task);
+		// }
+	}
 }
