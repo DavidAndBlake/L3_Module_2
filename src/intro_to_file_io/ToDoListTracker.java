@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 public class ToDoListTracker implements ActionListener {
@@ -56,14 +57,14 @@ public class ToDoListTracker implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		// String task = JOptionPane.showInputDialog("What task do you want to add?");
+		 String task = JOptionPane.showInputDialog("What task do you want to add?");
 		String currentText = label.getText();
-		label.setText("<html>" + currentText + "tester" + "</html>");
-		// if (isEmpty == false) {
-		// String currentText = label.getText();
-		// label.setText("<html>" + currentText + "\n" + task + "</html>");
-		// } else {
-		// label.setText(task);
-		// }
+		label.setText(currentText);
+		 if (isEmpty == false) {
+		 ArrayList<ToDoListTracker> labelList = new ArrayList<>(); 
+			 label.setText("<html>" + currentText + "\n" + task + "</html>");
+		 } else {
+		 label.setText(task);
+		 }
 	}
 }
