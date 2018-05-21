@@ -28,6 +28,7 @@ public class ToDoListTracker implements ActionListener {
 	JButton save = new JButton();
 	JButton load = new JButton();
 	JLabel label = new JLabel();
+	ArrayList<String> labelList= new ArrayList<>();
 	boolean isEmpty;
 
 	public static void main(String[] args) {
@@ -57,14 +58,24 @@ public class ToDoListTracker implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		 String task = JOptionPane.showInputDialog("What task do you want to add?");
-		String currentText = label.getText();
+
+		if (e.getSource() == addTask)
+		{
+		String task = JOptionPane.showInputDialog("What task do you want to add?");
+		labelList.add(task);
+		String currentText = "<html>";
+		for(int i = 0; i < labelList.size(); i++)
+		{
+			currentText += labelList.get(i) + "<br>";
+		}
+		currentText += "</html>";
+		System.out.println(currentText); 
 		label.setText(currentText);
-		 if (isEmpty == false) {
-		 ArrayList<ToDoListTracker> labelList = new ArrayList<>(); 
-			 label.setText("<html>" + currentText + "\n" + task + "</html>");
-		 } else {
-		 label.setText(task);
-		 }
+	}
+		if (e.getSource() == removeTask)
+		{
+			String removeTask = JOptionPane.showOptionDialog(null, "Which task do you want to remove?", null, optionType, messageType, icon, options, initialValue)
+					
+		}
 	}
 }
