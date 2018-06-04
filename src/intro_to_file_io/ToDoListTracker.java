@@ -28,7 +28,7 @@ public class ToDoListTracker implements ActionListener {
 	JButton save = new JButton();
 	JButton load = new JButton();
 	JLabel label = new JLabel();
-	ArrayList<String> labelList= new ArrayList<>();
+	ArrayList<String> labelList = new ArrayList<>();
 	boolean isEmpty;
 
 	public static void main(String[] args) {
@@ -48,6 +48,7 @@ public class ToDoListTracker implements ActionListener {
 		panel.add(save);
 		panel.add(load);
 		addTask.addActionListener(this);
+		removeTask.addActionListener(this);
 		frame.setSize(900, 700);
 		panel.add(label);
 		// panel.setBackground(Color.TRANSLUCENT);
@@ -59,23 +60,36 @@ public class ToDoListTracker implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 
-		if (e.getSource() == addTask)
-		{
-		String task = JOptionPane.showInputDialog("What task do you want to add?");
-		labelList.add(task);
-		String currentText = "<html>";
-		for(int i = 0; i < labelList.size(); i++)
-		{
-			currentText += labelList.get(i) + "<br>";
+		if (e.getSource() == addTask) {
+			String task = JOptionPane.showInputDialog("What task do you want to add?");
+			if (task != "" || task != null) { // Tried to prevent user from entering blank strings. Couldn't accomplish the task.
+			labelList.add(task);
+			String currentText = "<html>";
+			
+				for (int i = 0; i < labelList.size(); i++) {
+					currentText += labelList.get(i) + "<br>";
+				}
+				currentText += "</html>";
+				System.out.println(currentText);
+				label.setText(currentText);
+			}
 		}
-		currentText += "</html>";
-		System.out.println(currentText); 
-		label.setText(currentText);
-	}
-		if (e.getSource() == removeTask)
-		{
-			String removeTask = JOptionPane.showOptionDialog(null, "Which task do you want to remove?", null, optionType, messageType, icon, options, initialValue)
-					
+		if (e.getSource() == removeTask) {
+			String removeTask = JOptionPane.showInputDialog("What is the number of the task do you want to remove?");
+
+			for (int i = 0; i < labelList.size(); i++) {
+				if (removeTask == labelList.get(i)) {
+					labelList.remove(i);
+				}
+			}
+			String currentText = "<html>";
+			
+			for (int i = 0; i < labelList.size(); i++) {
+				currentText += labelList.get(i) + "<br>";
+			}
+			currentText += "</html>";
+			System.out.println(currentText);
+			label.setText(currentText);
 		}
 	}
 }
