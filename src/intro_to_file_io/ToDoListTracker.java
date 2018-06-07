@@ -61,6 +61,7 @@ public class ToDoListTracker implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 
 		if (e.getSource() == addTask) {
+			ArrayList taskArray = new ArrayList();
 			String task = JOptionPane.showInputDialog("What task do you want to add?");
 			if (task != "" || task != null) { // Tried to prevent user from entering blank strings. Couldn't accomplish the task.
 			labelList.add(task);
