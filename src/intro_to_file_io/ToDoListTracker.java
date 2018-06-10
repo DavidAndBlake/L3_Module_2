@@ -77,12 +77,13 @@ public class ToDoListTracker implements ActionListener {
 		}
 		if (e.getSource() == removeTask) {
 			String removeTask = JOptionPane.showInputDialog("What is the number of the task do you want to remove?");
-
-			for (int i = 0; i < labelList.size(); i++) {
-				if (removeTask == labelList.get(i)) {
-					labelList.remove(i);
-				}
-			}
+			int removeNumber = Integer.parseInt(removeTask);
+			labelList.remove(removeNumber);
+//			for (int i = 0; i < labelList.size(); i++) {
+//				if (removeTask == labelList.get(i)) {
+//					
+//				}
+//			}
 			String currentText = "<html>";
 			
 			for (int i = 0; i < labelList.size(); i++) {
