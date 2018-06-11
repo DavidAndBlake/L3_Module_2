@@ -2,6 +2,7 @@ package intro_to_file_io;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
 import java.util.ArrayList;
 
 import javax.swing.JButton;
@@ -28,6 +29,7 @@ public class ToDoListTracker implements ActionListener {
 	JButton save = new JButton();
 	JButton load = new JButton();
 	JLabel label = new JLabel();
+	private File saveFile = new File(null);
 	ArrayList<String> labelList = new ArrayList<>();
 	boolean isEmpty;
 
@@ -92,6 +94,9 @@ public class ToDoListTracker implements ActionListener {
 			currentText += "</html>";
 			System.out.println(currentText);
 			label.setText(currentText);
+		}
+		if (e.getSource() == save) {
+			
 		}
 	}
 }
