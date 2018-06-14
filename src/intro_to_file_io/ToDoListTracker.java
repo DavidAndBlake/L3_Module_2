@@ -2,7 +2,10 @@ package intro_to_file_io;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 
 import javax.swing.JButton;
@@ -29,7 +32,7 @@ public class ToDoListTracker implements ActionListener {
 	JButton save = new JButton();
 	JButton load = new JButton();
 	JLabel label = new JLabel();
-	private File saveFile = new File(null);
+	// private File saveFile = new File(null);
 	ArrayList<String> labelList = new ArrayList<>();
 	boolean isEmpty;
 
@@ -51,6 +54,7 @@ public class ToDoListTracker implements ActionListener {
 		panel.add(load);
 		addTask.addActionListener(this);
 		removeTask.addActionListener(this);
+		save.addActionListener(this);
 		frame.setSize(900, 700);
 		panel.add(label);
 		// panel.setBackground(Color.TRANSLUCENT);
@@ -65,10 +69,11 @@ public class ToDoListTracker implements ActionListener {
 		if (e.getSource() == addTask) {
 			ArrayList taskArray = new ArrayList();
 			String task = JOptionPane.showInputDialog("What task do you want to add?");
-			if (task != "" || task != null) { // Tried to prevent user from entering blank strings. Couldn't accomplish the task.
-			labelList.add(task);
-			String currentText = "<html>";
-			
+			if (task != "" || task != null) { // Tried to prevent user from entering blank strings. Couldn't accomplish
+												// the task.
+				labelList.add(task);
+				String currentText = "<html>";
+
 				for (int i = 0; i < labelList.size(); i++) {
 					currentText += labelList.get(i) + "<br>";
 				}
@@ -80,14 +85,8 @@ public class ToDoListTracker implements ActionListener {
 		if (e.getSource() == removeTask) {
 			String removeTask = JOptionPane.showInputDialog("What is the number of the task do you want to remove?");
 			int removeNumber = Integer.parseInt(removeTask);
-			labelList.remove(removeNumber);
-//			for (int i = 0; i < labelList.size(); i++) {
-//				if (removeTask == labelList.get(i)) {
-//					
-//				}
-//			}
+			labelList.remove(removeNumber - 1);
 			String currentText = "<html>";
-			
 			for (int i = 0; i < labelList.size(); i++) {
 				currentText += labelList.get(i) + "<br>";
 			}
@@ -96,7 +95,21 @@ public class ToDoListTracker implements ActionListener {
 			label.setText(currentText);
 		}
 		if (e.getSource() == save) {
-			
+			String fileName = JOptionPane.showInputDialog("What would you like to save this file as?");
+			try {
+				writeFile("kf.txt");
+			} catch (IOException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
 		}
 	}
+	public void writeFile(String fileName) 
+			throws IOException
+			{
+			  File file = new File (fileName);
+			  BufferedWriter out = new BufferedWriter(new FileWriter(file)); 
+			  out.write(labelList.toString());
+			  out.close();
+			}
 }
