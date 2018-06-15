@@ -97,7 +97,7 @@ public class ToDoListTracker implements ActionListener {
 		if (e.getSource() == save) {
 			String fileName = JOptionPane.showInputDialog("What would you like to save this file as?");
 			try {
-				writeFile("kf.txt");
+				writeFile(fileName);
 			} catch (IOException e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
