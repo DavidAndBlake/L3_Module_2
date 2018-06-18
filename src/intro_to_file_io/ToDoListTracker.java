@@ -2,8 +2,11 @@ package intro_to_file_io;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -55,6 +58,7 @@ public class ToDoListTracker implements ActionListener {
 		addTask.addActionListener(this);
 		removeTask.addActionListener(this);
 		save.addActionListener(this);
+		load.addActionListener(this);
 		frame.setSize(900, 700);
 		panel.add(label);
 		// panel.setBackground(Color.TRANSLUCENT);
@@ -103,13 +107,41 @@ public class ToDoListTracker implements ActionListener {
 				e1.printStackTrace();
 			}
 		}
-	}
-	public void writeFile(String fileName) 
-			throws IOException
-			{
-			  File file = new File (fileName);
-			  BufferedWriter out = new BufferedWriter(new FileWriter(file)); 
-			  out.write(labelList.toString());
-			  out.close();
+		if (e.getSource() == load) {
+			String read = JOptionPane.showInputDialog("Which file would you like to load?");
+			try {
+				BufferedReader br = new BufferedReader(new FileReader(read));
+
+				String line = br.readLine();
+				while (line != null) {
+					labelList.add(line);
+					line = br.readLine();
+				}
+				String currentText = "<html>";
+
+				for (int i = 0; i < labelList.size(); i++) {
+					currentText += labelList.get(i) + "<br>";
+				}
+				currentText += "</html>";
+				label.setText(currentText);
+				br.close();
+			} catch (FileNotFoundException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			} catch (IOException j) {
+				// TODO Auto-generated catch block
+				j.printStackTrace();
 			}
+		}
+	}
+
+	public void writeFile(String fileName) throws IOException {
+		File file = new File(fileName);
+		BufferedWriter out = new BufferedWriter(new FileWriter(file));
+		for (int i = 0; i < labelList.size(); i++) {
+			out.write(labelList.get(i) + "\n");
+		}
+		// out.write(labelList.toString());
+		out.close();
+	}
 }
